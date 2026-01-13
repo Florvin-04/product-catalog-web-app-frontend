@@ -12,7 +12,7 @@ const CategoryBadges = (props: Props) => {
   const { categories: selectedCategories, onRemove } = props;
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 flex-wrap">
       {selectedCategories.map((category) => (
         <Badge
           key={category.id}

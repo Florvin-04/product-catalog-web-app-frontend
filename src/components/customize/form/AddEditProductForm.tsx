@@ -275,6 +275,9 @@ const AddEditProductForm = (props: AddEditProductFormProps) => {
                 </Popover>
               </FormControl>
               <FormMessage />
+              <p className="text-muted-foreground text-sm">
+                Add custom category by searhing the category name and click the button
+              </p>
             </FormItem>
           )}
         />

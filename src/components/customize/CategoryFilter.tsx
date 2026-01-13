@@ -16,19 +16,17 @@ import {
 import { cn } from "@/lib/utils";
 import type { Category } from "@/lib/types";
 import { useGetCategories } from "@/services/categoryService";
-import CategoryBadges from "./CategoryBadges";
 
 type CategoryFilterProps = {
   onCategoryChange?: (categories: Category[]) => void;
   onReset?: () => void;
+  selectedCategories: Category[];
 };
 
-const CategoryFilter = ({ onCategoryChange, onReset }: CategoryFilterProps) => {
+const CategoryFilter = ({ onCategoryChange, onReset, selectedCategories }: CategoryFilterProps) => {
   const { data: categories } = useGetCategories();
 
   const [open, setOpen] = useState(false);
-
-  const [selectedCategories, setSelectedCategories] = useState<Category[]>([]);
 
   const handleCategoryChange = (category: Category) => {
     const isSelected = selectedCategories.some(
@@ -40,13 +38,11 @@ const CategoryFilter = ({ onCategoryChange, onReset }: CategoryFilterProps) => {
         (cat) => cat.id !== category.id
       );
 
-      setSelectedCategories(filteredCategories);
       if (onCategoryChange) {
         onCategoryChange(filteredCategories);
       }
     } else {
       const newCategories = [...selectedCategories, category];
-      setSelectedCategories(newCategories);
       if (onCategoryChange) {
         onCategoryChange(newCategories);
       }
@@ -54,7 +50,7 @@ const CategoryFilter = ({ onCategoryChange, onReset }: CategoryFilterProps) => {
   };
 
   return (
-    <div className="space-y-2">
+    <div className="">
       <div className="flex items-center gap-2">
         <Popover open={open} onOpenChange={setOpen}>
           <PopoverTrigger asChild>
@@ -110,12 +106,6 @@ const CategoryFilter = ({ onCategoryChange, onReset }: CategoryFilterProps) => {
           </Button>
         )}
       </div>
-      <CategoryBadges
-        categories={selectedCategories}
-        onRemove={(category) => {
-          handleCategoryChange(category);
-        }}
-      />
     </div>
   );
 };

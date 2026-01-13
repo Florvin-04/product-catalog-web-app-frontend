@@ -11,7 +11,7 @@ import AddEditProductForm from "./form/AddEditProductForm";
 const AddProductModal = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="self-start">
+    <div className="">
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent
           onInteractOutside={(e) => e.preventDefault()}
