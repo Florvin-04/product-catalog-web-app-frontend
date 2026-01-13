@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const AddProductZodSchema = z.object({
   name: z.string().min(1, "Name is required"),
-  price: z.number().min(0, "Price must be non-negative"),
+  price: z.number().min(1, "Price must be greater than zero"),
   categories: z
     .array(
       z.object({
