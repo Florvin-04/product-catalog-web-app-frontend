@@ -23,7 +23,26 @@ const AddProductModal = () => {
           </DialogHeader>
         </DialogContent>
       </Dialog>
-      <Button onClick={() => setIsOpen(true)}>Add Product</Button>
+      <button
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "8px",
+          padding: "10px 16px",
+          backgroundColor: "black", // blue
+          color: "#ffffff",
+          border: "none",
+          borderRadius: "8px",
+          fontSize: "14px",
+          fontWeight: 500,
+          cursor: "pointer",
+          whiteSpace: "nowrap",
+        }}
+        onClick={() => setIsOpen(true)}
+      >
+        Add Product
+      </button>
     </div>
   );
 };
